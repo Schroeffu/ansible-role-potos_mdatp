@@ -1,9 +1,4 @@
 ---
 
-- name: Example task to deploy a template
-  ansible.builtin.template:
-    src: 'potos.example.j2'
-    dest: '/potos.example'
-    owner: root
-    group: root
-    mode: '0755'
+- name: Execute MDATP enrollment
+  ansible.builtin.command: /usr/bin/python3 potos_mdatp/MicrosoftDefenderATPOnboardingLinuxServer.py
