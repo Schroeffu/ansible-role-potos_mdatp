@@ -1,7 +1,10 @@
 ---
 
-# Example variable
-potos_template_example_var: 'hello world!'
+# mdatp group tag
+mdatp_tag: Workgroup
 
-# List of items used for action xyz
-potos_template_example_list: []
+# mdatp realtime protection enabled/disabled
+mdatp_realtime_protection: enabled
+
+#mdatp PUA action policy
+mdatp_threat_policy_pua_action: block
