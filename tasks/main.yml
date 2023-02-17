@@ -14,8 +14,13 @@
     daemon_reload: yes
   notify: restart mdatp
 
-- name: Enable real-time-protection for mdatp
+- name: Configure real-time-protection value for mdatp
   command: /usr/bin/mdatp config real-time-protection --value {{ mdatp_realtime_protection | default('enabled') }}
   register: result
+  failed_when: result.rc != 0 and result.rc != 2
+  changed_when: result.rc != 2
+
+- name: Configure threat policy potentially unwanted application value for mdatp
+  command: /usr/bin/mdatp threat policy set --type potentially_unwanted_application --action {{ mdatp_threat_policy_pua_action | default('block') }}
   failed_when: result.rc != 0 and result.rc != 2
   changed_when: result.rc != 2
